@@ -37,6 +37,10 @@ RUN python3 -m pip install torch --no-cache-dir
 RUN python3 -m pip install --no-build-isolation --no-deps --no-cache-dir /opt/deeploc2_package && \
     rm -rf /opt/deeploc2_package
 
+#Permitions
+RUN mkdir -p /tmp/matplotlib /tmp/torch /tmp/.cache /tmp/torchinductor && \
+    chmod -R 777 /tmp/matplotlib /tmp/torch /tmp/.cache /tmp/torchinductor
+
 # Automatic execution to execute the DeepLoc2.1 and test the docker image
 ENTRYPOINT ["deeploc2"]
 
